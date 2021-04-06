@@ -1,8 +1,8 @@
-// TODO: Include packages needed for this application - done
+
 const inquirer = require('inquirer');
 const fs = require('fs');
-// TODO: Create an array of questions for user input
-const questions = [];
+const Choice = require('inquirer/lib/objects/choice');
+
 inquirer
   .prompt([
     {
@@ -17,25 +17,8 @@ inquirer
     },
     {
         type: 'input',
-        name: 'motivation',
-        message: 'Project Motivation:',
-    },
-
-    {
-        type: 'input',
-        name: 'why',
-        message: 'Why did you creat this project?',
-    },
-
-    {
-        type: 'input',
-        name: 'problemsolved',
-        message: 'What problem did you solve?',
-    },
-    {
-        type: 'input',
-        name: 'learn',
-        message: 'What did you learn?',
+        name: 'projectdescription',
+        message: 'Project Description:',
     },
     {
       type: 'input',
@@ -48,34 +31,26 @@ inquirer
       message: 'How to use:',
     },
     {
-      type: 'input',
-      name: 'screenshot',
-      message: 'Screenshot path:',
+      type: 'checkbox',
+      name: 'licensebadge',
+      message: 'Select a License',
+      choices: ["BSD-3-Clause", "(ISC OR GPL-3.0)","UNLICENSED"],
     },
     {
       type: 'input',
       name: 'license',
       message: 'License details',
     },
+    
     {
       type: 'input',
-      name: 'contributor1',
-      message: 'Project contributor? (1/4)',
+      name: 'contributor',
+      message: 'Project contributor?',
     },
     {
-      type: 'input',
-      name: 'contributor2',
-      message: 'Project contributor? (2/4)',
-    },
-    {
-      type: 'input',
-      name: 'contributor3',
-      message: 'Project contributor? (3/4)',
-    },
-    {
-      type: 'input',
-      name: 'contributor4',
-      message: 'Project contributor? (4/4)',
+      type: 'input', 
+      name: 'testinfo',
+      message: 'Add any testing intructions here',
     },
     {
       type: 'input',
@@ -87,13 +62,19 @@ inquirer
       name: 'phone',
       message: 'Your phone:',
     },
+    {
+      type: 'input',
+      name: 'contact',
+      message: 'Personal contact intructions:',
+    },
 
   ])
   .then((data) => {
 
-    const { projectname, motivation, why, problemsolved, learn, installationguide,
-    usageintructions, screenshot, license, contributor1, contributor2, contributor3, 
-    contributor4, githubusername, email, phone } = data;
+    const { projectname, projectdescription, installationguide, usageintructions, licensebadge, 
+      contributor, githubusername, testinfo, email, phone, contact } = data;
+    
+
 
     const README = 
     `
@@ -101,10 +82,7 @@ inquirer
 
 ## Description
 
-My motivation: ${ motivation }
-Why I built Tts: ${ why }
-The Problem(s) it solves: ${ problemsolved }
-What I learned: ${ learn }
+${ projectdescription }
 
 ## Table of Contents
 
@@ -125,37 +103,36 @@ How to use: ${ usageintructions }
 
 URL: (https://github.com/${ githubusername }/${ projectname })
 
-![alt text](${ screenshot })
-
 ## License
 
-License: ${ license }
+License: ${ licensebadge }
 
 ## Contributing
 
-- ${ contributor1 }: https://github.com/${ contributor1 }
-- ${ contributor2 }: https://github.com/${ contributor2 }
-- ${ contributor3 }: https://github.com/${ contributor3 }
-- ${ contributor4 }: https://github.com/${ contributor4 }
+- ${ contributor }: https://github.com/${ contributor }
 
 ## Tests
+
+${ testinfo }
 
 ## Questions
 
 - Github: https://github.com/${ githubusername }
 - Email: ${ email }
 - Phone: ${ phone }
+
+${ contact }
     `
 
      fs.writeFile('README.md', README, (err) =>
-       err ? console.log(err) : console.log('Success!')
+       err ? console.log(err) : console.log('README Created!')
      );
   });
 
 
 
-// TODO: Create a function to initialize app
+
 function init() {}
 
-// Function call to initialize app
+
 init();
