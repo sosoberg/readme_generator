@@ -71,7 +71,7 @@ inquirer
   ])
   .then((data) => {
 
-    const { projectname, projectdescription, installationguide, usageintructions, licensebadge, 
+    const { projectname, projectdescription, installationguide, usageintructions, licensebadge, license, 
       contributor, githubusername, testinfo, email, phone, contact } = data;
     
 
@@ -108,6 +108,10 @@ URL: (https://github.com/${ githubusername }/${ projectname })
 ## License
 
 <img src='https://img.shields.io/github/license/${ githubusername }/${ projectname} ?style=plastic'>
+
+License ${ licensebadge }
+
+${ license }
 
 ## Contributing
 
