@@ -22,7 +22,8 @@ How to install: npm install in your terminal to get inquirer and node fetch
 
 ## Usage
 
-![alt text](assets/video/videotutorial.webm "Video Tutorial")
+Check out my video tutorial: 
+(https://drive.google.com/file/d/10S-NQNYBdbgofgbd-DNLtFaV7KWqcGY9/view?usp=sharing)
 
 How to use: type node index into your terminal
 
