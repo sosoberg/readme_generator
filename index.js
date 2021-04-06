@@ -78,6 +78,8 @@ inquirer
 
     const README = 
     `
+<img src='https://img.shields.io/github/license/${ githubusername }/${ projectname } ?style=plastic'>
+
 # ${ projectname }
 
 ## Description
@@ -105,7 +107,7 @@ URL: (https://github.com/${ githubusername }/${ projectname })
 
 ## License
 
-License: ${ licensebadge }
+<img src='https://img.shields.io/github/license/${ githubusername }/${ projectname} ?style=plastic'>
 
 ## Contributing
 
